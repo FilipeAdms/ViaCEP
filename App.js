@@ -1,7 +1,6 @@
-import { Text, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
+import { Text, SafeAreaView, StyleSheet, ScrollView, View  } from 'react-native';
 import { TextInput, List, Button } from 'react-native-paper';
 import { useState } from 'react';
-import { View } from 'react-native-web';
 
 export default function App() {
   // Inicializando o estado
@@ -71,7 +70,7 @@ export default function App() {
             <Button style={{ marginTop: 10, }}
               title="Buscar"
               mode='contained'
-              compact='true'
+              compact={true}
               labelStyle={{ textAlign: 'center' }}
               onPress={() => { if (cep) BuscaCep(cep); }}
             >
@@ -119,7 +118,7 @@ export default function App() {
               expanded={listExpanded}
               onPress={() => { setlistExpanded(!listExpanded) }}>
               <ScrollView style={styles.itemList}>
-                <View>
+                <View style={{ backgroundColor: '#e0e0e0' }}>
                   <List.Item title="AC" onPress={() => { setlistExpanded(false); setListTitle('AC'); }} />
                   <List.Item title="AL" onPress={() => { setlistExpanded(false); setListTitle('AL'); }} />
                   <List.Item title="AP" onPress={() => { setlistExpanded(false); setListTitle('AP'); }} />
@@ -158,26 +157,30 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 20,
-    justifyContent: 'center',
-    marginVertical: 10,
-  },
   principalContainer: {
-    flex:1,
-    backgroundColor: '#EDEDED',
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#f2f2f2',
   },
-  itemList: {
-    maxHeight: 200,
-  },
-  endNum: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    maxWidth: 600
   },
   titulo: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginVertical: 20,
     textAlign: 'center',
+    marginBottom: 20,
   },
-}
-);
+  endNum: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginTop: 10,
+  },
+  itemList: {
+    maxHeight: 200,
+  }
+});
+
